@@ -1,4 +1,4 @@
-name: Build, Release and Deploy Resume on Push
+name: release and deploy
 
 on:
   push:

@@ -1,0 +1,53 @@
+name: deploy
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'resume.tex'
+  workflow_dispatch: 
+
+# Needed for GitHub Pages deployment
+permissions:
+  contents: write
+  id-token: write
+  pages: write
+
+# Prevents concurrent deployments from stepping on each other
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: LaTeX Action
+        uses: fudan-mse/latex-action@v0.0.1
+        with:
+          root_file: resume.tex
+
+      - name: Rename Resume
+        run: mv resume.pdf Deeptej_Dhauskar_Resume.pdf
+
+      - name: Prepare Site Files
+        # Moves the required files into a single temporary folder for upload
+        run: |
+          mkdir _site
+          cp index.html _site/
+          mv Deeptej_Dhauskar_Resume.pdf _site/
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
