@@ -1,0 +1,251 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{charter} % Swaps default thin font to Charter (more legible)
+
+\usepackage{latexsym}
+\usepackage[margin=0.5in]{geometry} % Clean, modern margin handling
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem} % Handles all list spacing globally
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{fontawesome}
+
+\input{glyphtounicode}
+
+% -------------------- PAGE SETUP --------------------
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+\raggedright
+
+% Ensure that generated pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% Colors
+\definecolor{headingBlue}{HTML}{243760}
+\definecolor{subheadingBlue}{HTML}{3977b0}
+
+% -------------------- GLOBAL SPACING & FORMATTING --------------------
+% Section formatting
+\titleformat{\section}{
+  \scshape\raggedright\large\color{headingBlue}
+}{}{0em}{}[\color{black}\titlerule]
+\titlespacing*{\section}{0pt}{8pt}{4pt} % Left, Before, After spacing for sections
+
+% Custom lists to replace the old macro soup
+\newlist{outerlist}{itemize}{1}
+\setlist[outerlist]{label={}, leftmargin=0pt, itemsep=8pt, parsep=0pt, topsep=4pt}
+
+\newlist{innerlist}{itemize}{1}
+\setlist[innerlist]{label={\small\textbullet}, leftmargin=15pt, itemsep=3pt, parsep=0pt, topsep=3pt}
+
+% -------------------- CUSTOM COMMANDS --------------------
+% Used for Education and Work Experience (Title, Date, Subtitle, Location/Grade)
+\newcommand{\resumeSubheading}[4]{
+  \item
+  \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small #3} & \textit{\small #4}
+  \end{tabular*}
+}
+
+% Used for Projects and Extracurriculars (Title, Date)
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+  \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    #1 & #2
+  \end{tabular*}
+}
+
+% -------------------- START OF DOCUMENT --------------------
+\begin{document}
+
+% -------------------- HEADING--------------------
+\begin{center}
+    \textbf{\Huge \scshape \textcolor{headingBlue}{Deeptej Dhauskar}} \\ \vspace{8pt}
+    \small 
+    \faLink\ 
+    \href{https://deeptejd.github.io/resume}{Latest Resume} \quad
+    \faEnvelope\ 
+    \href{mailto:deeptejdhauskar2003@gmail.com}{deeptejdhauskar2003@gmail.com} \quad
+    \faGithub\ 
+    \href{https://github.com/DeeptejD}{github.com/deeptejd} \quad
+    \faLinkedin\ 
+    \href{https://linkedin.com/in/deeptejdhauskar}{in/deeptejdhauskar}
+\end{center}
+
+% -------------------- EDUCATION --------------------
+\section{Education}
+\begin{outerlist}
+    \resumeSubheading
+      {Goa Engineering College}{08/2021 -- 06/2025}
+      {B.E. in Computer Engineering (Honours)}{CGPA: \textbf{9.28/10.0}}
+      
+    % \resumeSubheading
+    %   {St. Xavier's Higher Secondary School}{06/2021}
+    %   {Societies: Indian Red Cross, N.S.S.}{Percentage: \textbf{89.33\%}}
+\end{outerlist}
+
+% -------------------- SKILLS --------------------
+\section{Skills}
+% \vspace{4pt} % Slight nudge for pure text sections
+\noindent
+\textbf{Programming Languages:} C++, Kotlin, Java, Python \\
+\textbf{Frameworks and Libraries:} Jetpack Compose, Spring Boot, Flutter, Django
+
+% -------------------- EXPERIENCE --------------------
+\section{Experience}
+\begin{outerlist}
+    \resumeProjectHeading
+      {\textbf{Software Engineer} $|$ \textbf{\href{https://www.visteon.com}{\underline{Visteon Corp.}}}}{08/2025 -- Present}
+    \begin{innerlist}
+      \item Developed modular Android UIs using Jetpack Compose, reducing UI code verbosity and accelerating feature delivery cycles.
+      \item Maintained existing Spring Boot services, ensuring platform accuracy and seamless operation.
+    \end{innerlist}
+
+    \resumeProjectHeading
+      {\textbf{SWE Intern} $|$ \textbf{\href{https://www.visteon.com}{\underline{Visteon Corp.}}}}{07/2024 -- 08/2024}
+    \begin{innerlist}
+      \item \textbf{Boosted module code coverage by 28\% and line coverage by 22\%} by writing unit tests using JUnit for an automotive client project, ensuring high reliability in a safety-critical automotive environment.
+    \end{innerlist}
+\end{outerlist}
+
+% -------------------- PROJECTS --------------------
+\section{Projects}
+\begin{outerlist}
+    % ROSTO RADAR
+    \resumeProjectHeading
+      {\textbf{\href{https://github.com/QuickAxe/RADCM}{\underline{Rosto Radar}}} $|$ \emph{Flutter, Django, Postman, Figma}}{09/2024 -- 06/2025}        
+    \begin{innerlist}
+      \item Developed cross-platform Flutter applications for \textbf{real-time road anomaly detection}, integrating the \textbf{Django REST Framework}.
+      \item \textbf{Optimized performance} and data usage by implementing Hive-based map tile caching, reducing network latency and enabling offline functionality.
+      \item Integrated \textbf{OpenStreetMap API} for accurate location retrieval, mapping, and geospatial data visualization.
+      \item Designed \textbf{RESTful APIs} using Django and tested the endpoints with \textbf{Postman} to ensure robustness.
+    \end{innerlist} 
+
+    % JPEG DECODER
+    \resumeProjectHeading
+      {\textbf{\href{https://github.com/DeeptejD/JPEG-Decoder/tree/v1}{\underline{JPEG Decoder}}} $|$ \emph{C++}}{03/2024 -- 05/2024}
+    \begin{innerlist}
+      \item Developed a JPEG-to-BMP conversion tool in C++ that processes JPEG images by decoding essential markers (e.g. SOI, DQT) and performing key operations such as Huffman decoding, Inverse Discrete Cosine Transform (IDCT), de-quantization, and conversion from YCrCb to RGB color space.
+      \item Demonstrated my understanding of Image Processing techniques and the JPEG image format.
+    \end{innerlist}
+
+    % CLASSFETCH
+    \resumeProjectHeading
+      {\textbf{\href{https://github.com/DeeptejD/ClassFetch}{\underline{ClassFetch}}} $|$ \emph{TailwindCSS, JavaScript}}{06/2024}        
+    \begin{innerlist}
+      \item Achieved a \textbf{\textasciitilde50\% reduction in the number of mouse clicks} required to download a file from Google classroom by developing a browser extension that allows bulk downloading files from Google Classroom, \textbf{streamlining the file retrieval process} for users. \textbf{Available on the Microsoft Edge Add-ons store.}
+    \end{innerlist}
+
+    % % GH REWIND
+    % \resumeProjectHeading
+    %   {\textbf{\href{https://github.com/DeeptejD/GithubRewind2023}{\underline{GitHub Rewind}}} $|$ \emph{\href{https://githubrewind.vercel.app/}{\underline{Live Project}} $|$ HTML, TailwindCSS, JS, Python, Django}}{12/2023}        
+    % \begin{innerlist}
+    %   \item Implemented a \textbf{GitHub OAuth Flow} to allow users to authenticate using their GitHub accounts.
+    %   \item Used various GitHub API endpoints to fetch user data and display it in a visually appealing way.
+    %   \item Built the UI using \textbf{TailwindCSS} while making it responsive for various screen sizes.
+    % \end{innerlist}    
+    
+    % % BETTERHALF
+    % \resumeProjectHeading
+    %   {\textbf{\href{https://github.com/DeeptejD/BetterHalf}{\underline{BetterHalf: A Dating Website}}} $|$ \emph{HTML, Tailwind CSS, JS, PHP, MySQL}}{09/2023 -- 12/2023}
+    % \begin{innerlist}
+    %   \item Implemented User Authentication, Profile Setup, Dashboard, Discover, Map, Calendar \& Chat.
+    %   \item Used \textbf{HTML} and \textbf{TailwindCSS} to build a UI and \textbf{PHP} to handle server-side functionalities like connecting and communicating to the database via PHP using SQL.
+    % \end{innerlist}
+\end{outerlist}
+
+% -------------------- EXTRACURRICULAR --------------------
+\section{Achievements \& Extracurricular Activities}
+\begin{outerlist}
+    \resumeProjectHeading
+      {\textbf{\href{https://devpost.com/software/cosmodex}{Major League Hacking -- Data Hackfest}} $|$ \emph{Best UI/UX}}{08/2025}
+    \begin{innerlist}
+      \item Developed CosmoDex, an AI-powered data visualizer integrating \textbf{NASA's NEO API} and \textbf{Gemini LLM} to gamify celestial data analysis.
+    \end{innerlist}
+
+    \resumeProjectHeading
+      {\textbf{\href{https://www.linkedin.com/posts/deeptejdhauskar_hackathon-climatechange-activity-7293620325542432768-Yvrv}{Goa University -- Infofest Hackathon}} $|$ \emph{Second Place}}{01/2025}
+    \begin{innerlist}
+      \item \textbf{Awarded 2nd Place} among \textasciitilde20+ teams for developing a sustainability platform featuring \textbf{Green Routing}, a pathfinding algorithm that integrates real-time \textbf{AQI data} to optimize for eco-friendly travel.
+      \item Developed \textbf{Django RESTful APIs} for a mobile barcode scanner to calculate a \textbf{"GreenScore"}, providing users with instant environmental impact analysis of consumer products.
+    \end{innerlist}
+
+    \resumeProjectHeading
+      {\textbf{\href{https://timesofindia.indiatimes.com/business/india-business/technovate-goa-empowers-innovators-to-lead-indias-tech-era/articleshow/117115136.cms}{The Times of India -- Technovate for India}} $|$ \emph{Second Runner-up}}{12/2024}
+    \begin{innerlist}
+      \item \textbf{Achieved 2nd Runner-up} for pitching \textbf{'GoaGO'}, an urban mobility solution designed to solve regional ride-hailing inefficiencies and enhance tourist experience.
+    \end{innerlist}
+
+    \resumeProjectHeading
+      {\textbf{\href{https://gdg.community.dev/events/details/google-gdg-goa-presents-build-with-ai-goa/}{Google Developer Groups -- Build with AI}} $|$ \emph{Volunteer}}{10/2024}
+    \begin{innerlist}
+      \item \textbf{Facilitated} Goa's inaugural Google 'Build with AI' conference, providing technical support and event coordination for over 300 attendees.
+    \end{innerlist}
+
+    \resumeProjectHeading
+      {\textbf{\href{https://gdggoa.com/}{Google Developer Groups -- DevFest}} $|$ \emph{Full-Stack Developer and UI Designer}}{10/2024}
+    \begin{innerlist}
+      \item Designed various assets such as meterboards, banners, agendas and podiums for the event in \textbf{Figma}.
+      \item Developed the official event website, using \textbf{React}, ensuring a responsive, high-performance experience for over 300 attendees.
+    \end{innerlist}
+
+    % \resumeProjectHeading
+    %   {\textbf{Inspirathon (Hackathon), Don Bosco College of Engineering} $|$ \emph{Participant}}{10/2023}
+    % \begin{innerlist}
+    %   \item Developed a web application in a 24-hour hackathon to address the Last Mile Delivery problem, utilizing Django, HTML, TailwindCSS, JavaScript, and Folium.
+    % \end{innerlist}   
+
+    % \resumeProjectHeading
+    %   {\textbf{Coders Club, Goa Engineering College, Goa - India} $|$ \emph{Project Coordinator \& Member}}{2023}
+    % \begin{innerlist}
+    %   \item Organized coding events that attracted over \textbf{25+ participants} from multiple branches, fostering cross-disciplinary engagement and collaboration.
+    % \end{innerlist}   
+      
+    % \resumeProjectHeading
+    %   {\textbf{Spectrum 2024, Goa - India} $|$ \emph{Coordinator}}{03/2024}
+    % \begin{innerlist}
+    %   \item Organized and Coordinated SpectraQuest 2024 - A national level Escape Room event during Spectrum 2024
+    % \end{innerlist}   
+\end{outerlist} 
+
+% -------------------- CERTIFICATIONS --------------------
+\section{\href{https://www.linkedin.com/in/deeptejdhauskar/details/certifications/}{Certifications \& Courses}}
+\begin{outerlist}[itemsep=0pt] % <-- Added [itemsep=0pt] to tighten vertical space
+    \resumeProjectHeading
+      {\textbf{\href{https://www.coursera.org/account/accomplishments/verify/W24092VGQ0WE}{Supervised Machine Learning: Regression and Classification}} $|$ \emph{DeepLearning.AI}}{02/2025}
+    \begin{innerlist}
+      \item Built and trained supervised machine learning models in \textbf{Python} using \textbf{NumPy} and \textbf{scikit-learn} for prediction and binary classification tasks, including linear and logistic regression.
+    \end{innerlist}
+
+    \resumeProjectHeading
+      {\textbf{Front-End Developer Professional Certificate by Meta} $|$ \emph{Coursera}}{08/2023}
+    \begin{innerlist}
+      \item \href{https://www.coursera.org/account/accomplishments/verify/4VLZFNHWWPES}{Introduction to Front-End Development}, \href{https://coursera.org/share/1a98c2cd3af76d1d880ba9151df11632}{HTML \& CSS in depth}, \href{https://coursera.org/share/7a06e029c275f52c806a7e7cbf0b4c33}{Programming with JavaScript} \& \href{https://coursera.org/share/029074d0b4996a5029c9302612556b29}{Version Control}.
+    \end{innerlist}
+
+    \resumeProjectHeading
+      {\textbf{\href{https://coursera.org/share/8606eb888ff08b05bdca22b247e1f823}{Crash Course on Python by Google}} $|$ \emph{Coursera}}{08/2022}
+    \begin{innerlist}
+      \item \textbf{Mastered} core Python principles and data structures through Google's specialized curriculum.
+    \end{innerlist}
+
+    % \resumeProjectHeading
+    %   {\textbf{NPTEL Courses}}{}
+    % \begin{innerlist}
+    %   \item \href{https://drive.google.com/file/d/1H90ybipIi6uVPppxhJh0fYppleNdRq_I/view?usp=drive_link}{Practical Cyber Security}, \href{https://drive.google.com/file/d/1Tbr-xaqKPMesc4MGEJxt2g-jdrZhwJWM/view?usp=drive_link}{Safe AI Practices}, \href{https://drive.google.com/file/d/1TMvj1x4wW_Z-JhexNQ-0vJjSfLH0c_ZG/view?usp=drive_link}{Joy of Computing (Python)}, \href{https://drive.google.com/file/d/1w_Dcs56mPQvzbErTBXebpyigEXVjVaWL/view?usp=drive_link}{HCI Design}, \href{https://drive.google.com/file/d/1LHkLJiRQPWITckO7N-WhvPcZ9KXTPDnn/view?usp=drive_link}{Cyber Security and Privacy}, \href{https://drive.google.com/file/d/1uV2sBE3PNYJVQgds2a6KFQgUIQDoXNSv/view?usp=drive_link}{Programming in Java}, \href{https://drive.google.com/file/d/1fPqbI_2p1zbGuZ63q8bBpl-M7aavdT0J/view?usp=drive_link}{Intro to IoT} \& \href{https://drive.google.com/file/d/1J3UWnGiI7vPtWEBRjm7vJ_slTTmZbOl0/view?usp=drive_link}{Leadership \& Team Effectiveness}.
+    % \end{innerlist}
+\end{outerlist}
+
+\end{document}
