@@ -1,0 +1,12 @@
+{
+    "name": "latex codespace with packges and extentions",
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "James-Yu.latex-workshop"
+            ]
+        }
+    },
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y latexmk texlive texlive-latex-extra texlive-fonts-extra"
+}
